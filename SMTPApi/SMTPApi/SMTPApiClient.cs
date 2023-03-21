@@ -13,7 +13,7 @@ namespace SMTPApi
     /// </summary>
     public partial class SMTPApiClient
     {
-        protected static HttpClient httpClient;
+        private static HttpClient httpClient;
 
         /// <summary>
         /// 
