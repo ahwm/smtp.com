@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net462;net6.0;netstandard2.0</TargetFrameworks>
+    <PackageId>SMTP.com</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Adam Humpherys</Authors>
+    <RepositoryUrl>https://github.com/ahwm/smtp.com</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>smtp smtp.com email relay</PackageTags>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Copyright>(c) 2023 Adam Humpherys</Copyright>
+    <PackageProjectUrl>https://github.com/ahwm/smtp.com</PackageProjectUrl>
+    <Description>Unofficial wrapper for the SMTP.com API</Description>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Text.Json" Version="7.0.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+name: release
+on:
+  push:
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    - name: Restore
+      run: dotnet restore .\SMTPApi\SMTPApi.sln
+    - name: Build
+      run: dotnet build -c Release .\SMTPApi\SMTPApi.sln
+    - name: Test
+      run: dotnet test -c Release .\SMTPApi\SMTPApi.sln
+    - name: Pack
+      run: dotnet pack -c Release .\SMTPApi\SMTPApi.sln
+    - name: Publish
+      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
