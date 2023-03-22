@@ -12,21 +12,21 @@ namespace SMTPApi
 {
     public partial class SMTPApiClient
     {
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		/// <exception cref="Exception"></exception>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<ResponseType<ApiKeysType>> ListApiKeysAsync()
         {
             var response = await httpClient.GetAsync("api_keys");
-			if (!response.IsSuccessStatusCode)
-			{
-				var data = await response.Content.ReadAsAsync<Dictionary<string, object>>();
-				throw new Exception(JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true }));
-			}
-			return await response.Content.ReadAsAsync<ResponseType<ApiKeysType>>();
-		}
+            if (!response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsAsync<Dictionary<string, object>>();
+                throw new Exception(JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true }));
+            }
+            return await response.Content.ReadAsAsync<ResponseType<ApiKeysType>>();
+        }
 
         /// <summary>
         /// 
@@ -35,8 +35,8 @@ namespace SMTPApi
         /// <param name="description"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-		public async Task<ResponseType<ApiKeyType>> CreateNewKey(string name, string description)
-		{
+		public async Task<ResponseType<ApiKeyType>> CreateNewKeyAsync(string name, string description)
+        {
             var response = await httpClient.PostAsync($"api_keys?name={name}&description={description}", new StringContent(""));
             if (!response.IsSuccessStatusCode)
             {
@@ -49,6 +49,7 @@ namespace SMTPApi
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="apiKey"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
         public async Task<ResponseType<ApiKeyType>> GetApiKeyAsync(string apiKey)

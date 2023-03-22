@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SMTPApi
 {
     /// <summary>
-    /// 
+    /// Main class object for interacting with the SMTP.com API
     /// </summary>
     public partial class SMTPApiClient
     {
@@ -19,7 +19,7 @@ namespace SMTPApi
         /// 
         /// </summary>
         /// <param name="apiKey"></param>
-        public SMTPApiClient(string apiKey) 
+        public SMTPApiClient(string apiKey)
         {
             httpClient = new HttpClient
             {
